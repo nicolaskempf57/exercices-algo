@@ -79,11 +79,24 @@ Debut Exercice 5
                 FinPour
             FinPour
 
+            retourne this.TrouverLeGagnant(ListeDeTempsDeLaCourse)
+
+        FinFonction
+
+        Private Function TrouverLeGagnant(ListeDeTemps : ListeChaine[Circuit.NombreDeVoitures] de reel) : Voiture
             // Trouver le Gagnant
             // 1. Comparer les temps de la course
             // 2. Garder le plus petit
             // 3. Trouver la voiture correspondante
-
+            // Exemple : [2, 4, 5, 1, 8, 3]
+            // Minimum = 2
+            var ClefMinimum = 0
+            Pour i allant de 0 a Circuit.NombreDeVoitures - 1 par pas de 1 Faire
+                Si ListeDeTemps[i] < ListeDeTemps[ClefMinimum]
+                    ClefMinimum = i
+                FinSi
+            FinPour
+            retourne this.Voitures[ClefMinimum]
         FinFonction
     FinClasse
 
