@@ -1,0 +1,31 @@
+Debut Exercice 4
+    Classe Personnage :
+        Private var hp : Entier
+        Private var attaque : Entier
+        Private var defense : Entier
+
+        Public Fonction Personnage(var pointDeVie : Entier, attaque : Entier, defense : Entier): NULL
+            this.hp = pointDeVie
+            this.attaque = attaque
+            this.defense = defense
+        FinFonction
+
+        Public Fonction ToString(): Chaine de Caractères
+            retourne this.hp + ", " + this.attaque + ", " + this.defense
+        FinFonction
+    FinClasse
+
+    ListeDePersonnages : ListeChaine[3] de Personnage
+
+    Debut
+
+    ListeDePersonnages[0] = nouveau Personnage(10, 2, 4)
+    ListeDePersonnages[1] = nouveau Personnage(15, 4, 2)
+    ListeDePersonnages[2] = nouveau Personnage(20, 4, 4)
+
+    Pour i allant de 0 a max par pas de 1 Faire
+        Afficher(ListeDePersonnages[i])
+    FinPour
+
+    Fin
+Fin Exercice 4

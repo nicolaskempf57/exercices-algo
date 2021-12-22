@@ -1,0 +1,115 @@
+Debut Exercice 5
+    Classe Voiture :
+        Private var couleur : Chaine de caractères
+        Private var marque : Chaine de caractères
+        Private var puissance : Entier
+        Private var rapport : Entier
+        Private var prix : Entier
+        Private var vitesse : Entier
+
+        Fonction Voiture(var couleur : Chaine de caractères, marque : Chaine de Caractères, puissance : Entier, prix : Entier) : NULL
+        this.couleur = couleur
+        this.marque = marque
+        this.puissance = puissance
+        this.rapport = 0
+        this.prix = prix
+        this.vitesse = RANDOM(250, 300)
+        FinFonction
+
+        Fonction ChangerDeRapportMoteur(var rapport : Entier) : NULL
+            this.rapport = rapport
+        FinFonction
+
+        Public Fonction ModulerVitesse() : NULL
+            this.vitesse = this.vitesse + RANDOM(-10, 10)
+        FinFonction
+
+        Public Fonction getVitesse() : Entier
+            retourne this.vitesse
+        FinFonction
+
+        Fonction GetPrix() : Entier
+            retourne this.prix
+        FinFonction
+
+        Fonction ToString() : Chaine de Caractères
+            retourne "Voiture: " + this.couleur + ", " + this.marque + ", " +
+            this.puissance + ", " + this.prix
+        FinFonction
+    FinClasse
+
+    Classe Circuit
+        Private var LongueurDePiste : Entier // 30
+        Private var NombreDeTours : Entier // 2
+        Statique const NombreDeVoitures = 6
+        Private var Voitures: ListeChaine[Circuit.NombreDeVoitures] de Voiture // [260, 270, 280, 290, 300, 250]
+        
+
+        Public Function Circuit(var LongueurDePiste : Entier, var NombreDeTours : Entier, var Voitures : ListeChaine[6] de Voitures) : NULL
+            this.LongueurDePiste = LongueurDePiste
+            this.NombreDeTours = NombreDeTours
+            this.Voitures = Voitures
+        FinFonction
+
+        Public Function faireUnTour() : ListeChaine[] de reel
+            // Exemple de déroulé
+            // LongueurDePiste : 30 km
+            // Avant le premier tour : [260, 270, 280, 290, 300, 250]
+            // Fin du premier tour : [250, 260, 270, 280, 290, 240]
+            // Temps pour faire un tour : LongueurDePiste / Vitesse
+            // Temps pour faire un tour : [0.115, 0.111, 0.107, 0.103, 0.1, 0.12]
+
+            var ListeDeTemps : ListeChaine[Circuit.NombreDeVoitures] de reel
+
+            Pour i allant de 0 a Circuit.NombreDeVoitures - 1 par pas de 1 Faire
+                ListeDeTemps[i] = this.LongueurDePiste / this.Voitures[i].getVitesse()
+                this.Voitures[i].ModulerVitesse()
+            FinPour
+
+            retourne ListeDeTemps
+        FinFonction
+
+        Public Function faireLaCourse() : Voiture
+            var ListeDeTempsDeLaCourse : ListeChaine[Circuit.NombreDeVoitures] de reel
+            var ListeDeTempsDuTour : ListeChaine[Circuit.NombreDeVoitures] de reel
+            Pour i allant de 1 a this.NombreDeTours par pas de 1 Faire
+                ListeDeTempsDuTour = this.faireUnTour()
+                Pour j allant de 0 a Circuit.NombreDeVoitures - 1 par pas de 1 Faire
+                    ListeDeTempsDeLaCourse[j] = ListeDeTempsDeLaCourse[j] + ListeDeTempsDuTour[j]
+                FinPour
+            FinPour
+
+            // Trouver le Gagnant
+            // 1. Comparer les temps de la course
+            // 2. Garder le plus petit
+            // 3. Trouver la voiture correspondante
+
+        FinFonction
+    FinClasse
+
+    var NombreDeTours : Entier
+    var LongueurDePiste : Entier
+    var ListeDeVoiture : ListeChaine[Circuit.NombreDeVoitures] de Voitures
+    var NotreCircuit : Circuit
+    var Gagnant : Voiture
+
+    Debut
+
+    ListeDeVoiture[0] = nouveau Voiture("Bleu", "Peugeot", 6, 48000) // 260
+    ListeDeVoiture[1] = nouveau Voiture("Blanc", "Tesla", 120, 200000) // 270
+    ListeDeVoiture[2] = nouveau Voiture("Rouge", "Fiat", 80, 100000) // 280
+    ListeDeVoiture[3] = nouveau Voiture("Vert", "Renault", 90, 150000) // 290
+    ListeDeVoiture[4] = nouveau Voiture("Noir", "Ford", 110, 200000) // 300
+    ListeDeVoiture[5] = nouveau Voiture("Orange", "Toyota", 120, 200000) // 250
+
+    Afficher("Quel nombre de tours faut-il faire ?")
+    Demander(NombreDeTours) // 2
+    Afficher("Quelle est la longueur de piste ?")
+    Demander(LongueurDePiste) // 30
+
+    NotreCircuit = nouveau Circuit(LongueurDePiste, NombreDeTours, ListeDeVoiture)
+    Gagnant = NotreCircuit.faireLaCourse()
+    Afficher(Gagnant)
+
+    Fin
+Fin Exercice 5
