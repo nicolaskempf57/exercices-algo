@@ -1,0 +1,10 @@
+Classe Voiture :
+    Private var couleur : Chaine de caractères
+    Private var marque : Chaine de caractères
+    Private var puissance : Entier
+    Private var rapport : Entier
+
+    Fonction ChangerDeRapportMoteur(var rapport : Entier) : NULL
+        this.rapport = rapport
+    FinFonction
+FinClasse

@@ -1,0 +1,40 @@
+Debut Exercice 3
+    Classe Carré
+        Private var Côté : Entier
+
+        Public Fonction Carré(var côté : Entier) : NULL
+            this.Côté = côté
+        FinFonction
+
+        Public Fonction calculerPerimetre() : Entier
+            retourne 4 x this.Côté
+        FinFonction
+
+        Public Fonction calculerAire() : Entier
+            retourne this.Côté * this.Côté
+        FinFonction
+
+        Public Function sommePerimetre(var carre: Carré) : Entier
+            retourne this.calculerPerimetre() + carre.calculerPerimetre()
+        FinFonction
+
+        Public Function sommeAire(var carre: Carré) : Entier
+            retourne this.calculerAire() + carre.calculerAire()
+        FinFonction
+
+    FinClasse
+
+    var carre1 : Carré
+    var carre2 : Carré
+
+    Debut
+
+    carre1 = nouveau Carré(3)
+    carre2 = nouveau Carré(4)
+
+    Afficher(carre1.sommePerimetre(carre2))
+    Afficher(carre1.sommeAire(carre2))
+    Afficher(carre2.sommeAire(carre1)) // même résultat
+
+    Fin
+Fin Exercice 3

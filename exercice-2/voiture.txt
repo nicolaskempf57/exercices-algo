@@ -1,0 +1,48 @@
+Debut Excercice 2
+    Classe Voiture :
+        Private var couleur : Chaine de caractères
+        Private var marque : Chaine de caractères
+        Private var puissance : Entier
+        Private var rapport : Entier
+        Private var prix : Entier
+
+        Fonction Voiture(var couleur : Chaine de caractères, marque : Chaine de Caractères, puissance : Entier, prix : Entier) : NULL
+        this.couleur = couleur
+        this.marque = marque
+        this.puissance = puissance
+        this.rapport = 0
+        this.prix = prix
+        FinFonction
+
+        Fonction ChangerDeRapportMoteur(var rapport : Entier) : NULL
+            this.rapport = rapport
+        FinFonction
+
+        Fonction GetPrix() : Entier
+            retourne this.prix
+        FinFonction
+
+        Fonction ToString() : Chaine de Caractères
+            retourne "Voiture: " + this.couleur + ", " + this.marque + ", " +
+            this.puissance + ", " + this.prix
+        FinFonction
+    FinClasse
+
+    ListeDeVoiture : ListeChaine de Voiture
+    peugeot : Voiture
+    tesla : Voiture
+    total : Entier
+
+    Debut
+
+    var peugeot = nouveau Voiture("Bleu", "Peugeot", 6, 48000)
+    var tesla = nouveau Voiture("Blanc", "Tesla", 120, 200000)
+
+    Afficher(peugeot)
+    Afficher(tesla)
+
+    var total = peugeot.GetPrix() + tesla.GetPrix()
+    Afficher(total)
+
+    Fin
+Fin Exercice 2
