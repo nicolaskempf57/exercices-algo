@@ -23,7 +23,7 @@ Debut Exercice 4
     ListeDePersonnages[1] = nouveau Personnage(15, 4, 2)
     ListeDePersonnages[2] = nouveau Personnage(20, 4, 4)
 
-    Pour i allant de 0 a max par pas de 1 Faire
+    Pour i allant de 0 a 2 par pas de 1 Faire
         Afficher(ListeDePersonnages[i])
     FinPour
 

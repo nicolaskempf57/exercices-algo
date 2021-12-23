@@ -1,0 +1,41 @@
+Début Exercice 6
+	Classe Compte :
+	
+		Private var numeroCompte : Entier
+		Private var soldeCompte : Réel
+		
+        Fonction Compte(var numeroCompte : Entier, soldeCompte : Réel) : NULL
+		
+			this.numeroCompte = numeroCompte
+			this.soldeCompte = soldeCompte
+			
+        FinFonction		
+        Fonction operationCompte(var montant : Réél) : NULL
+		
+            this.soldeComtpe = this.soldeComtpe + montant
+			
+        FinFonction
+		
+        Fonction ToString() : Chaine de Caractères
+		
+            retourne "Compte numéro : " + this.numeroCompte + " Solde = " + this.soldeCompte
+			
+        FinFonction
+    FinClasse
+	Début
+	
+		monCompte = nouveau Compte(1,100.00)	
+		
+		monCompte.ToString()					// Solde = 100.00
+		
+		monCompte.operationCompte(100.00)	
+		
+		monCompte.ToString()					// Solde = 200.00
+		
+		monCompte.operationCompte(-50.00)		
+		
+		monCompte.ToString()					// Solde = 150.00
+	
+	Fin
+	
+Fin Exercice 6

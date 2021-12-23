@@ -1,0 +1,43 @@
+Exo 6 :
+    Classe CompteBancaire :
+        Private Var Nom : chaine de caractère
+        Private Var Prenom : chaine de caractère
+        Private Var NumCompte : int
+        Private Var solde : réel
+                    
+        Fonction CompteBancaire : (var nom : Chaine de Caractères , var Prenom : Chaine de Caractères, var solde : réél)
+            this.nom = nom
+            this.prenom = prenom
+            this.NumCompte = Random(30000-99999)
+            this.solde = solde
+        Fin de fonction
+            
+        Fonction get__nom :
+            Retourne this.nom
+        Fin de fonction
+
+        Fonction get__prenom :
+            Retourne this.prenom
+        Fin de fonction
+
+        Fonction get__NumCompte :
+            Retourne this.NumCompte
+        Fin de fonction
+
+        Fonction get__solde :
+            Retourne this.solde
+        Fin de fonction
+
+    Fin de classe
+
+    NouveauCLient : CompteBancaire
+    Client2 : CompteBancaire
+
+    Fonction Main : Null
+        var NouveauCLient = nouveau CompteBancaire( Mathoul, Olivier, 300)
+        Afficher(NouveauCLient.get__nom(), NouveauCLient.get__prenom(), NouveauCLient.get__NumCompte(), NouveauCLient.get__solde())
+
+        var Client2 = nouveau CompteBancaire( Kempf, Nicolas, 300)
+        Afficher(Client2.get__nom(), Client2.get__prenom(), Client2.get__NumCompte(), Client2.get__solde())
+    Fin de fonction
+    Appeler Main()
