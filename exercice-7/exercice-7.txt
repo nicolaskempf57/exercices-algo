@@ -1,0 +1,38 @@
+Debut Exercice 7
+
+    Classe Patient :
+        Private var Nom : Chaine de Caractères
+        Private var Prenom : Chaine de Caractères
+        Private var DateDeNaissance : Date
+
+        Public Fonction Patient(var Nom : Chaine de Caractères, var Prenom : Chaine de Caractères, var DateDeNaissance : Date) : NULL
+            this.Nom = Nom
+            this.Prenom = Prenom
+            this.DateDeNaissance = DateDeNaissance
+        Fin Fonction
+    Fin Classe
+
+    Classe Mineur Hérite Patient :
+        Private var NomRepresentant : Chaine de Caractères
+        Private var PrenomRepresentant : Chaine de Caractères
+
+        Public Fonction Mineur(var Nom : Chaine de Caractères, var Prenom : Chaine de Caractères, var DateDeNaissance : Date, var NomRepresentant : Chaine de Caractères, var PrenomRepresentant : Chaine de Caractères) : NULL
+            base.Patient(Nom, Prenom, DateDeNaissance)
+            this.NomRepresentant = NomRepresentant
+            this.PrenomRepresentant = PrenomRepresentant
+        FinFonction
+    FinClasse
+
+    Classe Femme Herite Patient :
+        Private var NomJeuneFille : Chaine De Caractères
+
+        Public Fonction Femme(var Nom : Chaine de Caractères, var Prenom : Chaine de Caractères, var DateDeNaissance : Date, var NomDeJeuneFille : Chaine de Caractères) : NULL
+            base.Patient(Nom, Prenom, DateDeNaissance)
+            this.NomJeuneFille = NomDeJeuneFille
+        FinFonction
+
+    FinClasse
+
+    Debut
+    Fin
+FIn Exercice 7
