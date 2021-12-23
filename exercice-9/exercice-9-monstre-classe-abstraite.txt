@@ -1,5 +1,5 @@
 Debut Exercice9
-    Classe Personnage
+    Abstrait Classe Personnage
         Private var nom : Chaine de caracteres
         Private var hp : Entier
         Protected var attaque : Entier
@@ -16,74 +16,52 @@ Debut Exercice9
             retourne this.hp
         FinFonction
 
-        Public Fonction Subir (var degats : Entier) : NULL
-            this.hp -= degats
-        FinFonction
-
         Public Fonction SetHp(var nouveauxHp : Entier) : NULL
             this.hp = nouveauxHp
         FinFonction
+
+        Public Abstrait Fonction Attaquer(var adversaire : Personnage) : NULL
+
     FinClasse
     // La classe PersonnageEpee herite (extends) de Personnage
-    Classe PersonnageEpee Herite Personnage implemente ICombattant :
+    Classe PersonnageEpee Herite Personnage :
         Public Fonction PersonnageEpee(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
             base.Personnage (nom, hp, attaque, defense)
         FinFonction
-        Public Fonction Attaquer(var adversaire : ICombattant): NULL
-            adversaire.Subir(adversaire.GetHp()/2)
+        Public Fonction Attaquer (var adversaire : Personnage): NULL
+            adversaire.SetHp(adversaire.GetHp()/2)
             // ou
             // var nouveauxPdV = adversaire.GetHp()/2
-            // adversaire.Subir(nouveauxPdV)
+            // adversaire.SetHp(nouveauxPdV)
         FinFonction
     FinClasse
     // La classe PersonnageBouleFeu herite (extends) de Personnage
-    Classe PersonnageBouleFeu Herite Personnage implemente ICombattant :
+    Classe PersonnageBouleFeu Herite Personnage :
         Public Fonction PersonnageBouleFeu(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
             base.Personnage (nom, hp, attaque, defense)
         FinFonction
-        Public Fonction Attaquer(var adversaire : ICombattant): NULL
-            adversaire.Subir(5)
+        Public Fonction Attaquer (var adversaire : Personnage): NULL
+            adversaire.SetHp(adversaire.GetHp() - 5)
         FinFonction
     FinClasse   
 
 
-    Classe Monstre implemente ICombattant
+    Classe Monstre Herite Personnage
 
-        Private var nom : Chaine de caracteres
-        Private var niveau : Entier
-        Private var barreDeVie : Entier
-
-        Public Fonction Monstre(var nom : Chaine de caracteres, var niveau : Entier) : NULL
-            this.nom = nom
-            this.niveau = niveau
+        Public Fonction Monstre(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
+            base.Personnage(nom, hp, attaque, defense)
         FinFonction
 
-        Public Fonction Subir(var degats : Entier) : NULL
-            Si degats > 5
-                this.barreDeVie -= degats / this.niveau
-            FinSi
-        FinFonction
-
-        Public Fonction GetHp() : Entier
-            retourne this.barreDeVie * this.niveau
-        FinFonction
-
-        Public Fonction Attaquer(var adversaire : ICombattant)
+        Public Fonction Attaquer(var adversaire : Personnage)
             adversaire.SetHp(adversaire.GetHp() - this.attaque)
         FinFonction
 
     FinClasse
 
-    Interface ICombattant :
-        Public Fonction Subir(var degats : Entier) : NULL
-        Public Fonction GetHp() : Entier
-        Public Fonction Attaquer(var adversaire : ICombattant) : NULL
-    FInInterface
-
     Debut // main
     var personnage1 = nouveau Monstre(monstreDuLac, 25, 10, 2)
     var personnage2 = nouveau PersonnageEpee(Lancelot, 25, 15, 3)
-    var personnage3 = nouveau Personnage(Lancelot, 25, 15, 3)
+    var personnage3 = nouveau Personnage(Bob, 25, 15, 3) // Ne fonctionne pas
 
     personnage1.Attaquer(personnage2)
     personnage2.AttaqueEpee(personnage1)
