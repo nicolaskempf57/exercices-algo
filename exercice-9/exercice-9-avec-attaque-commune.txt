@@ -19,13 +19,17 @@ Debut Exercice9
         Public Fonction SetHp(var nouveauxHp : Entier) : NULL
             this.hp = nouveauxHp
         FinFonction
+
+        Public Fonction Attaquer(var adversaire : Personnage)
+            adversaire.SetHp(adversaire.GetHp() - this.attaque)
+        FinFonction
     FinClasse
     // La classe PersonnageEpee herite (extends) de Personnage
     Classe PersonnageEpee Herite Personnage :
         Public Fonction PersonnageEpee(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
             base.Personnage (nom, hp, attaque, defense)
         FinFonction
-        Public Fonction AttaqueEpee (var adversaire : Personnage): NULL
+        Public Fonction Attaquer (var adversaire : Personnage): NULL
             adversaire.SetHp(adversaire.GetHp()/2)
             // ou
             // var nouveauxPdV = adversaire.GetHp()/2
@@ -37,7 +41,9 @@ Debut Exercice9
         Public Fonction PersonnageBouleFeu(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
             base.Personnage (nom, hp, attaque, defense)
         FinFonction
-        Public Fonction AttaqueBouleFeu (var adversaire : Personnage): NULL
+        Public Fonction Attaquer (var adversaire : Personnage): NULL
+            // si on veut utiliser la fonction attaquer du parent
+            // elle reste accessible avec base.Attaquer(adversaire)
             adversaire.SetHp(adversaire.GetHp() - 5)
         FinFonction
     FinClasse   
@@ -49,10 +55,6 @@ Debut Exercice9
             base.Personnage(nom, hp, attaque, defense)
         FinFonction
 
-        Public Fonction Attaquer(var adversaire : Personnage)
-            adversaire.SetHp(adversaire.GetHp() - this.attaque)
-        FinFonction
-
     FinClasse
 
     Debut // main
@@ -60,53 +62,6 @@ Debut Exercice9
     var personnage2 = nouveau PersonnageEpee(Lancelot, 25, 15, 3)
 
     personnage1.Attaquer(personnage2)
-    personnage2.AttaqueEpee(personnage1)
+    personnage2.Attaquer(personnage1)
 
-    FinDebut Exercice9
-    Classe Personnage
-        Private var nom : Chaine de caracteres
-        Private var hp : Entier
-        Private var attaque : Entier
-        Private var defense : Entier
-        // Constructeur
-        Public Fonction Personnage(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
-            this.nom = nom
-            this.hp = pointDeVie
-            this.attaque = attaque
-            this.defense = defense
-        FinFonction
-
-        Public Fonction GetHp() : Entier
-            retourne this.hp
-        FinFonction
-
-        Public Fonction SetHp(var nouveauxHp : Entier) : NULL
-            this.hp = nouveauxHp
-        FinFonction
-    FinClasse
-    // La classe PersonnageEpee herite (extends) de Personnage
-    Classe PersonnageEpee Herite Personnage :
-        Public Fonction PersonnageEpee(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
-            base.Personnage (nom, hp, attaque, defense)
-        FinFonction
-        Public Fonction AttaqueEpee (var adversaire : Personnage): NULL
-            adversaire.SetHp(adversaire.GetHp()/2)
-            // ou
-            // var nouveauxPdV = adversaire.GetHp()/2
-            // adversaire.SetHp(nouveauxPdV)
-        FinFonction
-    FinClasse
-    // La classe PersonnageBouleFeu herite (extends) de Personnage
-    Classe PersonnageBouleFeu Herite Personnage :
-        Public Fonction PersonnageBouleFeu(var nom : Chaine de caracteres, var hp : Entier, var attaque : Entier, var defense : Entier) : NULL
-            base.Personnage (nom, hp, attaque, defense)
-        FinFonction
-        Public Fonction AttaqueBouleFeu (var adversaire : Personnage): NULL
-            adversaire.SetHp(adversaire.GetHp() - 5)
-        FinFonction
-    FinClasse    
-    Debut // main
-    var personnage1 = nouveau Personnage(monstre, 25, 10, 2)
-    var personnage2 = nouveau PersonnageEpee(Lancelot, 25, 15, 3)
-    afficher()
     Fin
