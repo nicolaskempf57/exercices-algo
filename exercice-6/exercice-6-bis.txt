@@ -4,6 +4,7 @@ Exo 6 :
         Private Var Prenom : chaine de caractère
         Private Var NumCompte : int
         Private Var solde : réel
+        Statique Var Taux = 3
                     
         Fonction CompteBancaire : (var nom : Chaine de Caractères , var Prenom : Chaine de Caractères, var solde : réél)
             this.nom = nom
@@ -14,6 +15,10 @@ Exo 6 :
             
         Fonction get__nom :
             Retourne this.nom
+        Fin de fonction
+
+        Fonction set__nom(var nom : Chaine de Caractères) : NULL
+            this.nom = nom
         Fin de fonction
 
         Fonction get__prenom :
@@ -28,6 +33,23 @@ Exo 6 :
             Retourne this.solde
         Fin de fonction
 
+        Public Fonction retrait(var montant : reel) : NULL
+            this.operation(-1 * montant)
+        FinFonction
+
+        Public Fonction versement(var montant : reel) : NULL
+            this.operation(montant)
+        FinFonction
+
+        Private Fonction operation(var montant: reel) : NULL
+            this.solde += montant
+            this.ajouterInterets()
+        FinFonction
+
+        Private Fonction ajouterInterets() : NULL
+            this.solde = this.solde * (1 + CompteBancaire.Taux / 100)
+        FinFonction
+
     Fin de classe
 
     NouveauCLient : CompteBancaire
@@ -38,6 +60,16 @@ Exo 6 :
         Afficher(NouveauCLient.get__nom(), NouveauCLient.get__prenom(), NouveauCLient.get__NumCompte(), NouveauCLient.get__solde())
 
         var Client2 = nouveau CompteBancaire( Kempf, Nicolas, 300)
+        Client2.retrait(100)
+        Client2.versement(100)
         Afficher(Client2.get__nom(), Client2.get__prenom(), Client2.get__NumCompte(), Client2.get__solde())
+
+        Client2.set__nom(KEMPF LE STANC)
+
+        Afficher("Le taux d'intéret à diminuer")
+        CompteBancaire.Taux = 2
+
+        Afficher("Le taux d'intéret à diminuer")
+        CompteBancaire.Taux = 1
     Fin de fonction
     Appeler Main()
