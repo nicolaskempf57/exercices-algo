@@ -1,5 +1,197 @@
 Debut Exercice Noel
+    Classe Pièce :
+        Private Var Reference : Entier
+
+        Public Fonction Pièce(Var Reference : Entier) : NULL
+            this.Reference = Reference
+        FinFonction
+
+        Public Fonction getReference() : Entier
+            retourne this.Reference
+        FinFonction
+    FinClasse
+
+    Classe Roue Hérite Pièce :
+    FinClasse
+
+    Classe Axe Hérite Pièce :
+    FinClasse
+
+    Classe Chassis Hérite Pièce :
+    FinClasse
+
+    Classe CorpsDeCasseNoisette Hérite Pièce :
+    FinClasse
+
+    Classe CorpsDeCasseNoisetteSansBouche Hérite Pièce :
+    FinClasse
+
+    Classe Bouche Hérite Pièce :
+    FinClasse
+
+    Abstrait Classe Cadeau :
+        Protected Var MagieDeNoel : Entier
+        Protected Var Reference : Entier
+
+        Public Fonction Cadeau(Var MagieDeNoel : Entier, Var Reference : Entier) : NULL
+            this.MagieDeNoel = MagieDeNoel
+            this.Reference = Reference
+        FinFonction
+
+        Abstrait Public Fonction getReference() : Chaine de Caractères
+
+        Abstrait Public Fonction getAllPieces() : Tableau[] de Pièce        
+    FinClasse
+
+    Classe VoitureARoulettes Hérite Cadeau :
+
+        Private Var chassis : Chassis
+        Private Var tabAxes : Tableau[2] d'Axe
+        Private Var tabRoues : Tableau[4] de Roue
+
+        Public Fonction VoitureARoulettes(Var Reference : Entier, Var chassis : Chassis, Var tabAxes : Tableau[2] d'Axe, Var tabRoues : Tableau[4]) : NULL
+            base.Cadeau(13, Reference)
+            this.chassis = chassis
+            this.tabAxes = tabAxes
+            this.tabRoues = tabRoues
+        FinFonction
+
+        Public Fonction getReference() : Chaine de Caractères
+            retourne "Voiture à roulettes: " + this.Reference
+        FinFonction
+
+        Public Fonction getAllPieces() : Tableau[] de Pièce 
+            Var tabPieces : Tableau[] de Pièce
+
+            // tabPieces = []
+
+            tabPieces[0] = (Pièce) this.chassis
+
+            // tabPieces = [
+                un chassis
+            ]
+
+            Pour i allant de 0 a 1 par pas de 1 Faire
+                tabPieces[] = (Pièce) this.tabAxes[i]
+            FinPour
+
+            // Cas i = 0
+            // tabPieces = [
+            //    un chassis,
+            //    le premier axe
+            // ]
+
+            // Cas i = 1
+            // tabPieces = [
+            //    un chassis,
+            //    le premier axe,
+            //    le deuxieme axe
+            // ]
+
+            Pour i allant de 0 a 3 par pas de 1 Faire
+                tabPieces[] = (Pièce) this.tabRoues[i]
+            FinPour
+
+            // Cas i = 0
+            // tabPieces = [
+            //    un chassis,
+            //    le premier axe,
+            //    le deuxieme axe,
+            //    la premiere roue,
+            // ]
+
+
+            retourne tabPieces
+        FinFonction
+
+        Public Fonction getRoues() : Tableau[] de Roues
+            retourne this.tabRoues
+        FinFonction
+
+        Public Fonction getAxes() : Tableau[] d'Axes
+            retourne this.tabAxes
+        FinFonction
+
+        Public Fonction getChassis : Chassis
+            retourne this.chassis
+        FinFonction
+    FinClasse
+
+    Classe CasseNoisette Herite Cadeau :
+        Private Var corps : CorpsDeCasseNoisette
+
+        Public Fonction CasseNoisette(Var Reference : Entier, Var corps: CorpsDeCasseNoisette) : NULL
+            base.Cadeau(4, Reference)
+            this.corps = corps
+        FinFonction
+
+        Public Fonction getCorps() : CorpsDeCasseNoisette
+            retourne this.corps
+        FinFonction
+
+        Public Fonction getReference() : Chaine de Caractères
+            retourne "Casse Noisette : " + this.Reference
+        FinFonction
+
+        Public Fonction getAllPieces() : Tableau[] de Pièce 
+            Var tabPieces : Tableau[] de Pièce
+            tabPieces[] = (Pièce) this.corps
+            retourne tabPieces
+        FinFonction
+    FinClasse
+
+    Classe CasseNoisetteABoucheAmovible Herite Cadeau :
+        Private Var corpsSansBouche : CorpsDeCasseNoisetteSansBouche
+        Private Var bouche : Bouche
+
+        Public Fonction CasseNoisetteABoucheAmovible(Var Reference : Entier, Var corpsSansBouche, Var Bouche) : NULL
+            base.Cadeau(10, Reference)
+            this.corpsSansBouche = corpsSansBouche
+            this.bouche = bouche
+        FinFonction
+
+        Public Fonction getCorpsSansBouche() : CorpsDeCasseNoisetteSansBouche
+            retourne this.corpsSansBouche
+        FinFonction 
+
+        Public Fonction getBouche() : Bouche
+            retourne this.bouche
+        FinFonction
+
+        Public Fonction getReference() : Chaine de Caractères
+            retourne "Casse Noisette à Bouche amovible : " + this.Reference
+        FinFonction
+
+        Public Fonction getAllPieces() : Tableau[] de Pièce 
+            Var tabPieces : Tableau[] de Pièce
+            tabPieces[] = (Pièce) this.corpsSansBouche
+            tabPieces[] = (Pièce) this.bouche
+            retourne tabPieces
+        FinFonction
+    FinClasse
+
+    Var Reference : Entier
+    Var chassis : Chassis
+    Var tabAxes : Tableau[2] d'Axe
+    Var tabRoues : Tableau[4] de Roues
+    Var voiture : VoitureARoulettes
 
     Debut
+
+    Reference = 12
+    chassis = nouveau Chassis(1)
+    tabAxes[0] = nouveau Axe(2)
+    tabAxes[1] = nouveau Axe(3)
+
+    tabRoues[0] = nouveau Roue(4)
+    tabRoues[1] = nouveau Roue(5)
+    tabRoues[2] = nouveau Roue(6)
+    tabRoues[3] = nouveau Roue(6)
+
+    voiture = nouveau VoitureARoulettes(Reference, chassis, tabAxes, tabRoues)
+
+    Afficher(voiture.getAllPieces())
+    Afficher(voiture.getRoues())
+
     Fin
 Fin Exercice Noel
