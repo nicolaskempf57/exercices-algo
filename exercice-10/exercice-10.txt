@@ -1,0 +1,63 @@
+// Afin d'aborder le concept d'Interface,
+// Nous avons modifier l'exercice pour ajouter une
+// nouvelle classe chien robot qui peut aussi jouer
+Debut Exercice 10
+
+    Classe Poilu :
+        Protected Var DateDeNaissance : Date
+        Protected Var CouleurDePoil: Chaine de Caractères
+
+        Public Fonction Poilu(Var DateDeNaissance : Date, Var CouleurDePoil : Chaine de Caractères) : NULL
+            this.DateDeNaissance = DateDeNaissance
+            this.CouleurDePoil = CouleurDePoil
+        FinFonction
+
+        Public Fonction jouer() : NULL
+            Afficher("Je suis un poilu qui joue")
+        FinFonction
+    FinClasse
+
+    Classe Chat Hérite Poilu
+    FinClasse
+
+    Classe Chien Hérite Poilu
+    FinClasse
+
+    Classe Humain Hérite Poilu
+
+        Public Fonction Lire(): NULL
+            Afficher("Je suis un humain qui lit")
+        FinFonction
+
+    FinClasse
+
+    Var Coton : Chat
+    Var Nonosse : Chien
+    Var Nicolas : Humain
+
+    Var QuiJouent : Tableau[3] de Poilu
+
+    Debut
+
+    Coton = nouveau Chat(01/07/2011, "noir")
+    Nonosse = nouveau Chien(01/01/2015, "noir")
+    Nicolas = nouveau Humain(27/03/1992, "blond")
+
+    Coton.jouer()
+    Nonosse.jouer()
+    Nicolas.jouer()
+    Nicolas.lire()
+
+    QuiJouent[0] = (Poilu) Coton
+    QuiJouent[1] = (Poilu) Nonosse
+    QuiJouent[2] = (Poilu) Nicolas
+
+     Pour i allant de 0 a 2 par pas de 1 Faire
+        Afficher(QuiJouent[i].CouleurDePoil)
+        Afficher(QuiJouent[i].DateDeNaissance)
+        QuiJouent[i].jouer()
+        QuiJouent[i].Lire()
+    FinPour
+
+    Fin
+Fin Exercice 10
