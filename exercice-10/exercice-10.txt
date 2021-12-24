@@ -3,7 +3,7 @@
 // nouvelle classe chien robot qui peut aussi jouer
 Debut Exercice 10
 
-    Classe Poilu :
+    Classe Poilu implemente IJoueur :
         Protected Var DateDeNaissance : Date
         Protected Var CouleurDePoil: Chaine de Caractères
 
@@ -15,6 +15,10 @@ Debut Exercice 10
         Public Fonction jouer() : NULL
             Afficher("Je suis un poilu qui joue")
         FinFonction
+
+        Public Fonction jouer(var autreJoueur: IJoueur) : NULL
+            Afficher("Je suis un Poilu qui joue avec un autre joueur")
+        FinFonction
     FinClasse
 
     Classe Chat Hérite Poilu
@@ -23,19 +27,34 @@ Debut Exercice 10
     Classe Chien Hérite Poilu
     FinClasse
 
-    Classe Humain Hérite Poilu
-
+    Classe Humain Hérite Poilu :
         Public Fonction Lire(): NULL
             Afficher("Je suis un humain qui lit")
         FinFonction
-
     FinClasse
+
+    Classe ChienRobot implemente IJoeur :
+        Public Fonction jouer() : NULL
+            Afficher("Je suis un robot qui joue")
+        FinFonction
+
+        Public Fonction jouer(var autreJoueur: IJoueur) : NULL
+            Afficher("Je suis un robot qui joue avec un autre joueur")
+        FinFonction
+    FinClasse
+
+    Interface IJoueur :
+        Public Fonction jouer() : NULL
+        Public Fonction jouer(var autreJoueur: IJoueur) : NULL
+    FinInterface
 
     Var Coton : Chat
     Var Nonosse : Chien
     Var Nicolas : Humain
+    Var robot : ChienRobot
 
-    Var QuiJouent : Tableau[3] de Poilu
+    Var PoilusQuiJouent : Tableau[3] de Poilu
+    Var Joueurs : Tableau[4] de IJoueur
 
     Debut
 
@@ -48,15 +67,37 @@ Debut Exercice 10
     Nicolas.jouer()
     Nicolas.lire()
 
-    QuiJouent[0] = (Poilu) Coton
-    QuiJouent[1] = (Poilu) Nonosse
-    QuiJouent[2] = (Poilu) Nicolas
+    PoilusQuiJouent[0] = (Poilu) Coton
+    PoilusQuiJouent[1] = (Poilu) Nonosse
+    PoilusQuiJouent[2] = (Poilu) Nicolas
 
      Pour i allant de 0 a 2 par pas de 1 Faire
-        Afficher(QuiJouent[i].CouleurDePoil)
-        Afficher(QuiJouent[i].DateDeNaissance)
-        QuiJouent[i].jouer()
-        QuiJouent[i].Lire()
+        Afficher(PoilusQuiJouent[i].CouleurDePoil) // Ne fonctionne pas, CouleurDePoil est protected
+        Afficher(PoilusQuiJouent[i].DateDeNaissance) // Ne fonctionne pas, DateDeNaissance est protected
+        PoilusQuiJouent[i].jouer() // Execute la fonction jouer() parce que c'est une méthode de Poilu qui est publique
+        PoilusQuiJouent[i].Lire() // Ne fonctionne pas, la classe Poilu n'a pas de méthode Lire
+    FinPour
+
+    robot = nouveau ChienRobot()
+    robot.jouer()
+
+    PoilusQuiJouent[2] = (Poilu) robot // Ne fonctionne pas parce que ChienRobot n'a pas de lien avec Poilu
+    
+    
+    Joueurs[0] = (IJoueur) robot
+    Joueurs[1] = (IJoueur) Coton
+    Joueurs[2] = (IJoueur) Nonosse
+    Joueurs[3] = (IJoueur) Nicolas
+
+    Nicolas.Lire()
+
+    Pour i allant de 0 a 3 par pas de 1 Faire
+        Afficher(Joueurs[i].CouleurDePoil) // Non, pas de propriétés dans une interface
+        Afficher(Joueurs[i].DateDeNaissance) // Non, pas de propriétés dans une interface
+        Joueurs[i].jouer()
+        Joueurs[i].Lire() // Non, pas de fonction Lire dans l'interface
+        Joueurs[i].jouer((IJoueur) Nonosse)
+        Joueurs[i].jouer(Joueurs[2])
     FinPour
 
     Fin
