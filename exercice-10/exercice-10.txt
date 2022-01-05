@@ -19,12 +19,37 @@ Debut Exercice 10
         Public Fonction jouer(var autreJoueur: IJoueur) : NULL
             Afficher("Je suis un Poilu qui joue avec un autre joueur")
         FinFonction
+
+        Public Fonction GetDateDeNaissance(): Date
+            retourne this.DateDeNaissance
+        FinFonction
+
+        Public Fonction GetCouleurDePoil(): Chaine De Caractères
+            retourne this.CouleurDePoil
+        FinFonction
     FinClasse
 
     Classe Chat Hérite Poilu
     FinClasse
 
     Classe Chien Hérite Poilu
+        Private Var Nom: Chaine de Caractères
+
+        Public Fonction Chien(Var Nom: Chaine de Caractères , Var DateDeNaissance : Date, Var CouleurDePoil : Chaine de Caractères) : NULL
+            base.Poilu(DateDeNaissance ,CouleurDePoil)
+            this.Nom = Nom
+        FinFonction
+
+        Public Fonction GetNom(): Chaine de Caractères
+            retourne this.Nom
+        FinFonction
+
+        Public Fonction Equal(Var autreChien: Chien): Booléen
+            return this.nom == autreChien.GetNom() && 
+                this.DateDeNaissance == autreChien.GetDateDeNaissance() &&
+                this.CouleurDePoil == autreChien.GetCouleurDePoil()
+        FinFonction
+
     FinClasse
 
     Classe Humain Hérite Poilu :
@@ -50,6 +75,8 @@ Debut Exercice 10
 
     Var Coton : Chat
     Var Nonosse : Chien
+    Var Nounours : Chien
+    Var Rex : Chien
     Var Nicolas : Humain
     Var robot : ChienRobot
 
@@ -59,8 +86,18 @@ Debut Exercice 10
     Debut
 
     Coton = nouveau Chat(01/07/2011, "noir")
-    Nonosse = nouveau Chien(01/01/2015, "noir")
     Nicolas = nouveau Humain(27/03/1992, "blond")
+    Nonosse = nouveau Chien("Nonosse", 01/01/2015, "noir")
+    Nounours = nouveau Chien("Nonosse", 01/01/2015, "noir")
+    Rex = Nonosse
+
+    Si Nonosse == Nounours:
+        Afficher("C'est le même chien")
+    FinSi
+
+    Si Nonosse == Rex:
+        Afficher("C'est le même chien")
+    FinSi
 
     Coton.jouer()
     Nonosse.jouer()

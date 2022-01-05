@@ -54,6 +54,10 @@ Debut Exercice Polymorphisme
             this.solde -= Montant
             retourne this.solde
         FinFonction
+
+        Public Fonction PayerParCB(Var Montant: Flottant): Entier
+            this.PayerParCB((Entier) Montant * 100)
+        Fonction
     FinClasse
 
     Classe LivretA Herite Compte
@@ -83,6 +87,10 @@ Debut Exercice Polymorphisme
             FinSi
             retourne this.Solde
         FinFonction
+
+        Public Fonction PayerParCB(Var Montant: Flottant): Entier
+            retourne this.PayerParCB((Entier) Montant * 100)
+        Fonction
     FinClasse
 
     Debut
