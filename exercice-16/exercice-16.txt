@@ -1,0 +1,83 @@
+Debut Exercice 16
+
+    Classe Vecteur2D:
+        Private Var x: Reel
+        Private Var y: Reel
+
+        Public Fonction Vecteur2D(Var x: Entier, Var y: Entier): NULL
+            this.Vecteur2D((Reel) x,(Reel) y)
+        FinFonction
+
+        Public Fonction Vecteur2D(Var x: Reel, Var y: Reel): NULL
+            this.x = x
+            this.y = y
+        FinFonction
+
+        Public Fonction Vecteur2D(Var vecteur: Vecteur2D): NULL
+            this.Vecteur2D(vecteur.getX(), vecteur.getY())
+        FinFonction
+
+        Public Fonction GetX(): Reel
+            retourne this.x
+        FinFonction
+
+        Public Fonction GetY(): Reel
+            retourne this.y
+        FinFonction
+
+        Public Fonction SetX(Var x: Reel): NULL
+            this.x = x
+        FinFonction
+
+        Public Fonction Add(Var vecteur: Vecteur2D): NULL
+            this.x += vecteur.getX()
+            this.y += vecteur.getY()
+        FinFonction
+
+        // Autre exemple possible de définition de Add
+        Public Fonction Add(Var vecteur: Vecteur2D): Vecteur2D
+            Var resultatX : Reel
+            Var resultatY : Reel
+            resultatX = this.x + vecteur.getX()
+            resultatY = this.y + vecteur.getY()
+            retourne nouveau Vecteur2D(resultatX, resultatY)
+        FinFonction
+
+        Public Fonction Sous(Var vecteur: Vecteur2D): NULL
+            this.x -= vecteur.getX()
+            this.y -= vecteur.getY()
+        FinFonction
+
+        Public Fonction Mult(Var nombre: Reel): NULL
+            this.x *= nombre
+            this.y *= nombre
+        FinFonction
+
+        Public Fonction Div(Var nombre: Reel): NULL
+            this.x /= nombre
+            this.y /= nombre
+        FinFonction
+
+        Public Fonction ToString(): Chaine de Caractères
+            retourne "Vecteur 2D : x = " + this.x + " et y = " + this.y
+        FinFonction
+
+    FinClasse
+
+    Var Vecteur1: Vecteur2D
+    Var Vecteur2: Vecteur2D
+    Var Vecteur3: Vecteur2D
+
+    Debut
+        Vecteur1 = nouveau Vecteur2D(1, 1)
+        Vecteur2 = nouveau Vecteur2D(1.0, 3.0)
+        Vecteur3 = nouveau Vecteur2D(Vecteur1)
+
+        Afficher(Vecteur1 + Vecteur2) // "Vecteur 2D : x = 2 et y = 4"
+        Afficher(Vecteur1 - Vecteur2) // "Vecteur 2D : x = 0 et y = -2"
+        Afficher(Vecteur1 * 4) // "Vecteur 2D : x = 4 et y = 4"
+        Afficher(Vecteur2 / 2) // "Vecteur 2D : x = 0.5 et y = 1.5"
+
+    Fin
+
+Fin Exercice 16
