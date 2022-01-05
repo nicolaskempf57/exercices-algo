@@ -92,6 +92,7 @@ Debut Exercice 10
     Coton = nouveau Chat(01/07/2011, "noir")
     Nicolas = nouveau Humain(27/03/1992, "blond")
     Nonosse = nouveau Chien("Nonosse", 01/01/2015, "noir")
+    // Exemple de création d'une nouvelle variable avec clonage
     Nounours = nouveau Chien(Nonosse)
     Rex = Nonosse
 
