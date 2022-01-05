@@ -1,0 +1,90 @@
+Debut Exercice Polymorphisme
+
+    Classe Compte
+        Protected Var Num : Entier
+        Protected Var Solde : Entier
+
+        Public Fonction Compte(Var Num: Entier, Var Solde: Entier): NULL
+            this.Num = Num
+            this.Solde = Solde
+        FinFonction
+
+        Public Fonction GetNum(): Entier
+            retourne this.Num
+        FinFonction
+
+        Public Fonction SetNum(Var Num: Entier): NULL
+            this.Num = Num
+        FinFonction
+
+        Public Fonction GetSolde(): Entier
+            retourne this.Solde
+        FinFonction
+
+        Public Fonction SetSolde(Var Solde: Entier): NULL
+            this.Solde = Solde
+        FinFonction
+    FinClasse
+
+    Classe CB
+        // pour etre complet il faudrait ajouter tous les attributs de la classe CB
+        // - Num CB
+        // - Date d'expiration
+        // - Porteur de la carte
+        // - CVV
+    FinClasse
+
+    Classe CompteCourant Herite Compte
+        Protected Var Cb : CB
+
+        Public Fonction CompteCourant(Var Num: Entier, Var Solde: Entier, Var Cb: CB): NULL
+        base.Compte(Num, Solde)
+        this.Cb = CB
+        FinFonction
+
+        Public Fonction GetCb(): CB
+            retourne this.Cb
+        FinFonction
+
+        Public Fonction SetCb(Var Cb: CB): NULL
+            this.Cb = Cb
+        FinFonction
+
+        Public Fonction PayerParCB(Var Montant: Entier): Entier
+            this.solde -= Montant
+            retourne this.solde
+        FinFonction
+    FinClasse
+
+    Classe LivretA Herite Compte
+        Protected Var TauxDInteret : Entier
+
+        Public Fonction LivretA(Var Num: Entier, Var Solde: Entier, Var TauxDInteret: Entier): NULL
+            base.Compte(Num, Solde)
+            this.TauxDInteret = TauxDInteret
+        FinFonction
+
+        Public Fonction GetTauxDInteret(): Entier
+            retourne this.TauxDInteret
+        FinFonction
+    
+        Public Fonction SetTauxDInteret(Var Taux: Entier): NULL
+            this.TauxDInteret = Taux
+        FinFonction
+
+    FinClasse
+
+    Classe CompteJeune Herite CompteCourant
+        Public Fonction PayerParCB(Var Montant: Entier): Entier
+            Si (Montant > this.Solde)
+                Afficher("Opération Impossible, le compte jeune ne peut pas avoir de solde négatif")
+            Sinon
+                base.PayerParCB(Montant)
+            FinSi
+            retourne this.Solde
+        FinFonction
+    FinClasse
+
+    Debut
+    Fin
+Fin Exercice Polymorphisme
