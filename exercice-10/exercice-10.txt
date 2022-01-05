@@ -92,7 +92,6 @@ Debut Exercice 10
     Coton = nouveau Chat(01/07/2011, "noir")
     Nicolas = nouveau Humain(27/03/1992, "blond")
     Nonosse = nouveau Chien("Nonosse", 01/01/2015, "noir")
-    Nounours = nouveau Chien(Nonosse.GetNom(), Nonosse.GetDateDeNaissance(), Nonosse.GetCouleurDePoil())
     Nounours = nouveau Chien(Nonosse)
     Rex = Nonosse
 
