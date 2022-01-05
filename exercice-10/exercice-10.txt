@@ -40,6 +40,10 @@ Debut Exercice 10
             this.Nom = Nom
         FinFonction
 
+        Public Fonction Chien(Var AutreChien: Chien) : NULL
+            this.Chien(AutreChien.GetNom(), AutreChien.GetDateDeNaissance(),AutreChien.GetCouleurDePoil())
+        FinFonction
+
         Public Fonction GetNom(): Chaine de Caractères
             retourne this.Nom
         FinFonction
@@ -88,7 +92,8 @@ Debut Exercice 10
     Coton = nouveau Chat(01/07/2011, "noir")
     Nicolas = nouveau Humain(27/03/1992, "blond")
     Nonosse = nouveau Chien("Nonosse", 01/01/2015, "noir")
-    Nounours = nouveau Chien("Nonosse", 01/01/2015, "noir")
+    Nounours = nouveau Chien(Nonosse.GetNom(), Nonosse.GetDateDeNaissance(), Nonosse.GetCouleurDePoil())
+    Nounours = nouveau Chien(Nonosse)
     Rex = Nonosse
 
     Si Nonosse == Nounours:
