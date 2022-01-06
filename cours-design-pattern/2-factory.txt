@@ -1,0 +1,45 @@
+Debut Cours Factory
+
+    Classe Animal
+
+        Private Var Couleur : Chaine de Caractères
+
+        Public Fonction Animal(Var CouleurDePoil: Chaine de Caractères): NULL
+            this.Couleur = CouleurDePoil
+        FinFonction
+
+    FinClasse
+
+    Classe Chat Hérite Animal
+    FinClasse
+
+    Classe Chien Hérite Animal
+    FinClasse
+
+    Classe FabriqueAnimal
+        Public Fonction CreeAnimal(var type: Chaine de Caractères, var couleur: Chaine de Caractères) : Animal
+            Si (type == "chien") alors
+                Retourner nouveau Chien(couleur)
+            Sinon Si (type == "chat") alors
+                Retourner nouveau Chat(couleur)
+            Sinon
+                Retourner NULL
+            FinSi
+        FinFonction
+    FinClasse
+
+    Var fabrique : FabriqueAnimal
+    Var animal: Animal
+    Var autreAnimal: Animal
+
+    Debut
+
+        fabrique = new FabriqueAnimal()
+
+        animal = fabrique.CreeAnimal("chien", "noir")
+
+        autreAnimal = fabrique.CreeAnimal("chat", "noir")
+
+    Fin
+
+Fin Cours Factory

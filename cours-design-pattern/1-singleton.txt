@@ -3,7 +3,8 @@ Debut Cours Singleton
     Classe Personnage
         Private Var Nom : Chaine De Caractères
         Private Static Instance : Personnage
-        Private Fonction Personnage() : Null
+        Private Fonction Personnage(Var Nom: Chaine De Caractères) : Null
+            this.Nom = Nom
         FinFonction
         Public Static Fonction GetInstance() : Personnage
             Si Instance == null alors
@@ -31,7 +32,7 @@ Debut Cours Singleton
     Afficher(autrePerso.GetNom())
 
     perso.SetNom("Nicolas")
-    
+
     Afficher(perso.GetNom())
     Afficher(autrePerso.GetNom())
 
