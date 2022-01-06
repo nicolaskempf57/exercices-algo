@@ -1,0 +1,39 @@
+Debut Cours Singleton
+
+    Classe Personnage
+        Private Var Nom : Chaine De Caractères
+        Private Static Instance : Personnage
+        Private Fonction Personnage() : Null
+        FinFonction
+        Public Static Fonction GetInstance() : Personnage
+            Si Instance == null alors
+                Instance = new Personnage("Boris")
+            Finsi
+            Retourner Instance
+        FinFonction
+        Public Fonction GetNom(): Chaine De Caractères
+            retourne this.Nom
+        FinFonction
+        Public Fonction SetNom(Var Nom: Chaine De Caractères): NULL
+            this.Nom = Nom
+        FinFonction
+    FinClasse
+
+    Var perso : Personnage
+    Var autrePerso : Personnage
+
+    Debut
+
+    perso = Personnage.GetInstance()
+    autrePerso = Personnage.GetInstance()
+
+    Afficher(perso.GetNom())
+    Afficher(autrePerso.GetNom())
+
+    perso.SetNom("Nicolas")
+    
+    Afficher(perso.GetNom())
+    Afficher(autrePerso.GetNom())
+
+    Fin
+Fin Cours Singleton
