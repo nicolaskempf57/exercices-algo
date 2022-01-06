@@ -1,0 +1,103 @@
+Debut Question 6
+
+	Classe Humain :
+
+        Protected Var Nom : Chaine de Caractères
+
+        Public Fonction Humain(Var Nom: Chaine de Caractères): NULL
+            this.Nom = Nom
+        FinFonction
+
+		Public Fonction caresser(Var ChatQueJeCaresse: Chat): NULL
+			Afficher("Je caresse " + ChatQueJeCaresse.getNom())
+			ChatQueJeCaresse.seFaireCaresser(this)
+		FinFonction
+
+	Fin Classe
+
+    Classe Bébé Hérite Humain :
+
+        Private Var Bruit : Reel
+
+        Public Fonction Bébé(Var Nom: Chaine de Caractères, Var Bruit: Reel): NULL
+            base.Humain(Nom)
+            this.Bruit = Bruit
+        FinFonction
+
+    FinClasse
+
+	Classe Chat :
+		Private Var Nom: Chaine de Caractères
+		Private Var Maitre: Humain
+
+		Public Fonction Chat(Var Nom: Chaine de Caractères, Maitre: Humain): NULL
+			this.Nom = Nom
+			this.Maitre = Maitre
+		FinFonction
+
+		Public Fonction seFaireCaresser(Var HumainQuiCaresse: Humain): NULL
+			Si this.Maitre == HumainQuiCaresse
+				this.miauler()
+			Sinon
+				this.griffer(HumainQuiCaresse)
+			FinSi
+		FinFonction
+
+		Public Fonction griffer(Var HumainQuiCaresse: Humain): NULL
+			Afficher(this.Nom + " griffe " + HumainQuiCaresse.getNom())
+		FinFonction
+
+		Public Fonction miauler(): NULL
+			Afficher("Miaou")
+		FinFonction
+	Fin Classe
+
+
+    Classe ChatSansInjectionDeDependance :
+		Private Var Nom: Chaine de Caractères
+		Private Var Maitre: Humain
+
+		Public Fonction Chat(Var Nom: Chaine de Caractères, Maitre: Humain): NULL
+			this.Nom = Nom
+			this.Maitre = Maitre
+		FinFonction
+
+        ' Ici on crée un Humain au lieu de l'avoir en paramètre
+        ' Ce qui rend le code du chat beaucoup plus lié au code de l'Humain
+        ' La classe Humain ne peut plus être abstraite ni une Interface
+        ' Et il n'est plus possible de transtyper des variables de classes filles en Humain
+		Public Fonction seFaireCaresser(Var Nom: Chaine De Caractères): NULL
+            Var HumainQuiCaresse : Humain
+            HumainQuiCaresse = nouveau Humain(Nom)
+			Si this.Maitre == HumainQuiCaresse
+				this.miauler()
+			Sinon
+				this.griffer(HumainQuiCaresse)
+			FinSi
+		FinFonction
+
+		Public Fonction griffer(Var HumainQuiCaresse: Humain): NULL
+			Afficher(this.Nom + " griffe " + HumainQuiCaresse.getNom())
+		FinFonction
+
+		Public Fonction miauler(): NULL
+			Afficher("Miaou")
+		FinFonction
+	Fin Classe
+
+    Var Nicolas : Humain
+    Var Coton : Chat
+    Var Lucien : Bébé
+
+    Debut
+
+        Nicolas = nouveau Humain("Nicolas")
+        Coton = nouveau Chat("Coton", Nicolas)
+
+        Lucien = nouveau Bébé("Lucien", 0.2)
+        Coton.seFaireCaresser(Nicolas)
+        Coton.seFaireCaresser((Humain) Lucien)
+
+    Fin
+
+Fin Question
